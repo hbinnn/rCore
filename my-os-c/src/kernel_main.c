@@ -1,5 +1,5 @@
 #include "sbi.h"
-#include "print.h"
+#include "kprint.h"
 #include "log.h"
 
 extern char *sbss;
@@ -21,7 +21,7 @@ void clear_bss()
 void kernel_main()
 {
     clear_bss();
-    print("hello world\n");
+    kprint("hello world\n");
     errorf("stext: %p", stext);
 	warnf("etext: %p", etext);
 	infof("sroda: %p", srodata);

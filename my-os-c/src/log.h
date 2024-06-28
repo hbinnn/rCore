@@ -1,7 +1,7 @@
 #ifndef LOG_H
 #define LOG_H
 
-#include "print.h"
+#include "kprint.h"
 
 #define USE_LOG_ERROR
 #define USE_LOG_WARN
@@ -25,42 +25,42 @@ static inline int threadid()
 #define errorf(fmt, ...)                                               \
 	do {                                                               \
 		int tid = threadid();                                          \
-		print("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", RED, "ERROR", tid,    \
+		kprint("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", RED, "ERROR", tid,   \
 		       ##__VA_ARGS__);                                         \
 	} while (0)
 
 #define warnf(fmt, ...)                                                \
 	do {                                                               \
 		int tid = threadid();                                          \
-		print("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", YELLOW, "WARN", tid,  \
+		kprint("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", YELLOW, "WARN", tid, \
 		       ##__VA_ARGS__);                                         \
 	} while (0)
 
 #define infof(fmt, ...)                                                \
 	do {                                                               \
 		int tid = threadid();                                          \
-		print("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", BLUE, "INFO", tid,    \
+		kprint("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", BLUE, "INFO", tid,   \
 		       ##__VA_ARGS__);                                         \
 	} while (0)
 
 #define debugf(fmt, ...)                                               \
 	do {                                                               \
 		int tid = threadid();                                          \
-		print("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", GREEN, "DEBUG", tid,  \
+		kprint("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", GREEN, "DEBUG", tid, \
 		       ##__VA_ARGS__);                                         \
 	} while (0)
 
 #define tracef(fmt, ...)                                               \
 	do {                                                               \
 		int tid = threadid();                                          \
-		print("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", GRAY, "TRACE", tid,   \
+		kprint("\x1b[%dm[%s %d]" fmt "\x1b[0m\n", GRAY, "TRACE", tid,  \
 		       ##__VA_ARGS__);                                         \
 	} while (0)
 
 #define panic(fmt, ...)                                                \
 	do {                                                               \
 		int tid = threadid();                                          \
-		print("\x1b[%dm[%s %d] %s:%d: " fmt "\x1b[0m\n", RED,          \
+		kprint("\x1b[%dm[%s %d] %s:%d: " fmt "\x1b[0m\n", RED,         \
 		       "PANIC", tid, __FILE__, __LINE__, ##__VA_ARGS__);       \
 		shutdown();                                                    \
 	} while (0)

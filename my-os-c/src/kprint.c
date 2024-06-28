@@ -1,7 +1,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include "types.h"
-#include "print.h"
+#include "kprint.h"
 #include "console.h"
 
 static char digits[] = "0123456789abcdef";
@@ -38,7 +38,7 @@ static void printptr(uint64 x)
 		console_putchar(digits[x >> (sizeof(uint64) * 8 - 4)]);
 }
 
-void print(const char *fmt, ...)
+void kprint(const char *fmt, ...)
 {
     va_list ap;
 	int i, c;
